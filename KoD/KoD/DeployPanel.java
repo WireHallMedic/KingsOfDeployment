@@ -32,7 +32,11 @@ public class DeployPanel extends JPanel implements KoDConstants
    public void addUnit(Unit u)
    {
       if(!unitList.contains(u))
+      {
          unitList.add(u);
+         u.setDeployed(true);
+         selectedUnit = u;
+      }
    }
    
    public void addUnitCopy(Unit u)
@@ -61,6 +65,7 @@ public class DeployPanel extends JPanel implements KoDConstants
       Graphics2D g2d = (Graphics2D)g;
       setPixelsPerInch();
       
+      // paint the field
       int fieldWidth = (int)(widthInInches * pixelsPerInch);
       int fieldHeight = (int)(heightInInches * pixelsPerInch);
       int startX = (getWidth() - fieldWidth) / 2;
@@ -74,5 +79,29 @@ public class DeployPanel extends JPanel implements KoDConstants
       for(int y = 0; y < heightInInches; y++)
          g2d.drawLine(startX, startY + (int)(y * pixelsPerInch), startX + fieldWidth, startY + (int)(y * pixelsPerInch));
       
+      // paint the units
+      for(Unit curUnit : unitList)
+      {
+         double[][] pointsInInches = curUnit.getCorners();
+         int[] pixelPointsX = new int[pointsInInches[0].length];
+         int[] pixelPointsY = new int[pointsInInches[1].length];
+         for(int i = 0; i < pixelPointsX.length; i++)
+         {
+            pixelPointsX[i] = (int)(pointsInInches[0][i] * pixelsPerInch) + startX;
+            pixelPointsY[i] = (int)(pointsInInches[1][i] * pixelsPerInch) + startY;
+         }
+         g2d.setColor(Color.WHITE);
+         g2d.fillPolygon(pixelPointsX, pixelPointsY, pixelPointsX.length);
+         g2d.setColor(Color.BLACK);
+         g2d.drawPolygon(pixelPointsX, pixelPointsY, pixelPointsX.length);
+        //  FontMetrics fontMetrics = g2d.getFontMetrics();
+//          int lineWidth = fontMetrics.stringWidth(curUnit.getDisplayName());
+//          int lineHeight = fontMetrics.getHeight();
+//          int centerX = (int)(center[0] * pixelsPerInch);
+//          int centerY = (int)(center[1] * pixelsPerInch);
+//          g2d.drawString(curUnit.getDisplayName(), centerX - (lineWidth / 2), centerY + (lineHeight / 2));
+      }
+      
+      // paint the auras
    }
 }

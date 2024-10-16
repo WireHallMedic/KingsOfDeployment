@@ -43,7 +43,7 @@ public class ControlPanel extends JPanel implements KoDConstants, ActionListener
       if(ae.getSource() == newB)
          parent.setNewUnit();
       if(ae.getSource() == deployB)
-         ;
+         parent.deployUnit();
       if(ae.getSource() == deleteB)
          ;
       if(ae.getSource() == saveB)

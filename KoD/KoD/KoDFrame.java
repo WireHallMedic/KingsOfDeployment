@@ -47,6 +47,15 @@ public class KoDFrame extends JFrame
       unitPanel.newUnit();
    }
    
+   public void deployUnit()
+   {
+      if(unitPanel.hasValidUnitShape())
+      {
+         deployPanel.addUnit(unitPanel.getCurUnit());
+      }
+      deployPanel.repaint();
+   }
+   
    public static void main(String[] args)
    {
       KoDFrame frame = new KoDFrame();

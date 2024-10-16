@@ -75,6 +75,7 @@ public class Unit implements KoDConstants
    {
       return getCornersCenteredOnPoint(origin[0] - xOffset, origin[1] - yOffset);
    }
+   public double[][] getCorners(){return getCorners(0.0, 0.0);}
    
    // returns list of x points and parallel list of y points, relative to explicit position
    // TODO: implement rotation
