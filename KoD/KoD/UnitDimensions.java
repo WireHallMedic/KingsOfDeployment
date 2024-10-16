@@ -2,41 +2,6 @@ package KoD;
 
 public class UnitDimensions implements KoDConstants
 {
-
-   // using a function rather than a static array for readability
-   public static int[] getIndividualSizeMM(UnitType type)
-   {
-      int[] result = {-1, -1};
-      switch(type)
-      {
-         case INFANTRY :            result[0] = 20; 
-                                    result[1] = 20;
-                                    break;
-         case HEAVY_INFANTRY :      result[0] = 25; 
-                                    result[1] = 25;
-                                    break;
-         case CAVALRY :             result[0] = 25; 
-                                    result[1] = 50;
-                                    break;
-         case LARGE_INFANTRY :
-         case SWARM :               result[0] = 40; 
-                                    result[1] = 40;
-                                    break;
-         case MONSTER:
-         case WAR_MACHINE :
-         case LARGE_CAVALRY :
-         case MONSTROUS_INFANTRY :  result[0] = 50; 
-                                    result[1] = 50;
-                                    break;
-         case CHARIOT :             result[0] = 50; 
-                                    result[1] = 100;
-                                    break;
-         case TITAN :               result[0] = 75; 
-                                    result[1] = 75;
-                                    break;
-      }
-      return result;
-   }
    
    public static int[] getTroopSizeModels(UnitType type)
    {
@@ -154,7 +119,6 @@ public class UnitDimensions implements KoDConstants
    
    public static double[] getUnitSizeInches(UnitType unitType, UnitSize unitSize)
    {
-      int[] modelSizeMM = getIndividualSizeMM(unitType);
       int[] unitSizeModels = {1, 1};
       switch(unitSize)
       {
@@ -171,8 +135,8 @@ public class UnitDimensions implements KoDConstants
       if(unitSizeModels == null)
          return null;
       double[] unitSizeInches = new double[2];
-      unitSizeInches[0] = modelSizeMM[0] * unitSizeModels[0] * MM_TO_IN;
-      unitSizeInches[1] = modelSizeMM[1] * unitSizeModels[1] * MM_TO_IN;
+      unitSizeInches[0] = unitType.width * unitSizeModels[0] * MM_TO_IN;
+      unitSizeInches[1] = unitType.length * unitSizeModels[1] * MM_TO_IN;
       return unitSizeInches;
    }
 }
