@@ -51,7 +51,10 @@ public class KoDFrame extends JFrame
    {
       if(unitPanel.hasValidUnitShape())
       {
-         deployPanel.addUnit(unitPanel.getCurUnit());
+         Unit unit = unitPanel.getCurUnit();
+         if(unit.isDeployed())
+            unit = new Unit(unit);
+         deployPanel.addUnit(unit);
       }
       repaintField();
    }

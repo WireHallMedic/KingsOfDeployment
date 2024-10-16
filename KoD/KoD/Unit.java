@@ -101,4 +101,5 @@ public class Unit implements KoDConstants
              y >= origin[1] - (length / 2) &&
              y <= origin[1] + (length / 2);
    }
+   public boolean pointIsIn(double[] coord){return pointIsIn(coord[0], coord[1]);}
 }
