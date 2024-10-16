@@ -92,4 +92,13 @@ public class Unit implements KoDConstants
       return fullList;
    }
    public double[][] getCornersCenteredOnPoint(double[] center){return getCornersCenteredOnPoint(center[0], center[1]);}
+   
+   // returns true if the passed point is within this unit, else false
+   public boolean pointIsIn(double x, double y)
+   {
+      return x >= origin[0] - (width / 2) &&
+             x <= origin[0] + (width / 2) &&
+             y >= origin[1] - (length / 2) &&
+             y <= origin[1] + (length / 2);
+   }
 }

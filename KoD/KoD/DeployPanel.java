@@ -3,8 +3,9 @@ package KoD;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
+import java.awt.event.*;
 
-public class DeployPanel extends JPanel implements KoDConstants
+public class DeployPanel extends JPanel implements KoDConstants, MouseListener, MouseMotionListener
 {
    private int widthInInches;
    private int heightInInches;
@@ -105,4 +106,13 @@ public class DeployPanel extends JPanel implements KoDConstants
       
       // paint the auras
    }
+   
+   // mouse stuff
+   public void mouseClicked(MouseEvent e){}
+   public void mouseEntered(MouseEvent e){}
+   public void mouseExited(MouseEvent e){}
+   public void mousePressed(MouseEvent e){}
+   public void mouseMoved(MouseEvent e){}
+   public void mouseReleased(MouseEvent e){}
+   public void mouseDragged(MouseEvent e){}
 }
