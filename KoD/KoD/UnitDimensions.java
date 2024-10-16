@@ -61,6 +61,8 @@ public class UnitDimensions implements KoDConstants
          case MONSTER:
          case WAR_MACHINE :         break;
       }
+      if(result[0] == -1 || result[1] == -1)
+         return null;
       return result;
    }
    
@@ -87,6 +89,8 @@ public class UnitDimensions implements KoDConstants
          case MONSTER:
          case WAR_MACHINE :         break;
       }
+      if(result[0] == -1 || result[1] == -1)
+         return null;
       return result;
    }
    
@@ -115,6 +119,8 @@ public class UnitDimensions implements KoDConstants
          case MONSTER:
          case WAR_MACHINE :         break;
       }
+      if(result[0] == -1 || result[1] == -1)
+         return null;
       return result;
    }
    
@@ -141,7 +147,33 @@ public class UnitDimensions implements KoDConstants
          case MONSTER:
          case WAR_MACHINE :         break;
       }
+      if(result[0] == -1 || result[1] == -1)
+         return null;
       return result;
+   }
+   
+   public static double[] getUnitSizeInches(UnitType unitType, UnitSize unitSize)
+   {
+      int[] modelSizeMM = getIndividualSizeMM(unitType);
+      int[] unitSizeModels = {1, 1};
+      switch(unitSize)
+      {
+         case INDIVIDUAL : break;
+         case TROOP :      unitSizeModels = getTroopSizeModels(unitType);
+                           break;
+         case REGIMENT :   unitSizeModels = getRegimentSizeModels(unitType);
+                           break;
+         case HORDE :      unitSizeModels = getHordeSizeModels(unitType);
+                           break;
+         case LEGION :     unitSizeModels = getLegionSizeModels(unitType);
+                           break;
+      }
+      if(unitSizeModels == null)
+         return null;
+      double[] unitSizeInches = new double[2];
+      unitSizeInches[0] = modelSizeMM[0] * unitSizeModels[0] * MM_TO_IN;
+      unitSizeInches[1] = modelSizeMM[1] * unitSizeModels[1] * MM_TO_IN;
+      return unitSizeInches;
    }
 }
 
