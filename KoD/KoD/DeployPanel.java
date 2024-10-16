@@ -92,6 +92,8 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
             pixelPointsY[i] = (int)(pointsInInches[1][i] * pixelsPerInch) + startY;
          }
          g2d.setColor(Color.WHITE);
+         if(curUnit == selectedUnit)
+            g2d.setColor(Color.BLUE);
          g2d.fillPolygon(pixelPointsX, pixelPointsY, pixelPointsX.length);
          g2d.setColor(Color.BLACK);
          g2d.drawPolygon(pixelPointsX, pixelPointsY, pixelPointsX.length);
@@ -105,6 +107,11 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
       }
       
       // paint the auras
+   }
+   
+   public double[] translatePixelToInches(int x, int y)
+   {
+      return null;
    }
    
    // mouse stuff
