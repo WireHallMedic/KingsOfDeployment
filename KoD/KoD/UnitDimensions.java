@@ -117,5 +117,31 @@ public class UnitDimensions implements KoDConstants
       }
       return result;
    }
+   
+   public static int[] getLegionSizeModels(UnitType type)
+   {
+      int[] result = {-1, -1};
+      switch(type)
+      {
+         case INFANTRY : 
+         case HEAVY_INFANTRY :      result[0] = 10; 
+                                    result[1] = 6;
+                                    break;
+         case CAVALRY :             break;
+         case LARGE_INFANTRY:
+         case SWARM :               
+         case LARGE_CAVALRY:
+         case MONSTROUS_INFANTRY :  result[0] = 6; 
+                                    result[1] = 2;
+                                    break;
+         case CHARIOT :             result[0] = 3; 
+                                    result[1] = 2;
+                                    break;
+         case TITAN :
+         case MONSTER:
+         case WAR_MACHINE :         break;
+      }
+      return result;
+   }
 }
 
