@@ -11,7 +11,10 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
    private JComboBox<UnitType> unitTypeDD;
    private JComboBox<UnitSize> unitSizeDD;
    private JTextField nameF;
+   private JTextField displayNameF;
    private JTextField infoF;
+   private JCheckBox aura6;
+   private JCheckBox aura9;
    private JPanel[] subpanel;
    private UnitDisplayPanel unitDisplayPanel;
    private static final int CONTROL_ROWS = 6;
@@ -41,6 +44,12 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
       nameF = new JTextField(curUnit.getName());
       nameF.getDocument().addDocumentListener(this);
       subpanel[0].add(nameF);
+      
+      subpanel[1].setLayout(new GridLayout(1, 2));
+      subpanel[1].add(new JLabel("Display Name"));
+      displayNameF = new JTextField(curUnit.getDisplayName());
+      displayNameF.getDocument().addDocumentListener(this);
+      subpanel[1].add(displayNameF);
       
       subpanel[1].setLayout(new GridLayout(1, 2));
       subpanel[1].add(new JLabel("Unit Type"));

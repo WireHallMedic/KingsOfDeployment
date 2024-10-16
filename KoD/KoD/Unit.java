@@ -6,6 +6,7 @@ public class Unit implements KoDConstants
 	private double length;
 	private double angle;
 	private String name;
+   private String displayName;
 	private double[] origin;
 
 
@@ -13,6 +14,7 @@ public class Unit implements KoDConstants
 	public double getLength(){return length;}
 	public double getAngle(){return angle;}
 	public String getName(){return name;}
+   public String getDisplayName(){return displayName;}
 	public double[] getOrigin(){return origin;}
 
 
@@ -21,6 +23,7 @@ public class Unit implements KoDConstants
    public void setSize(double s[]){width = s[0]; length = s[1];}
 	public void setAngle(double a){angle = a;}
 	public void setName(String n){name = n;}
+   public void setDisplayName(String n){displayName = n;}
 	public void setOrigin(double[] o){origin = o;}
    public void setOrigin(int x, int y){origin[0] = x; origin[1] = y;}
 
@@ -33,6 +36,7 @@ public class Unit implements KoDConstants
    public Unit(String n, double w, double l)
    {
       name = n;
+      displayName = "";
       width = w;
       length = l;
       origin = new double[2];
