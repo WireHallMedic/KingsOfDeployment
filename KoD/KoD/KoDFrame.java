@@ -56,6 +56,13 @@ public class KoDFrame extends JFrame
       repaintField();
    }
    
+   public void deleteSelectedUnit()
+   {
+      deployPanel.deleteSelectedUnit();
+      unitPanel.getCurUnit().setDeployed(false);
+      repaintField();
+   }
+   
    public void repaintField()
    {
       if(deployPanel != null)
