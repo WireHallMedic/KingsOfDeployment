@@ -13,8 +13,8 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
    private JTextField nameF;
    private JTextField displayNameF;
    private JTextField infoF;
-   private JCheckBox aura6;
-   private JCheckBox aura9;
+   private JCheckBox aura6CB;
+   private JCheckBox aura9CB;
    private JPanel[] subpanel;
    private UnitDisplayPanel unitDisplayPanel;
    private static final int CONTROL_ROWS = 6;
@@ -68,6 +68,16 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
       subpanel[curRow].add(unitSizeDD);
       curRow++;
       
+      subpanel[curRow].setLayout(new GridLayout(1, 3));
+      aura6CB = new JCheckBox("Show 6\" Ring");
+      aura9CB = new JCheckBox("Show 9\" Ring");
+      aura6CB.addActionListener(this);
+      aura9CB.addActionListener(this);
+      subpanel[curRow].add(aura6CB);
+      subpanel[curRow].add(aura9CB);
+      subpanel[curRow].add(new JLabel(""));
+      curRow++;
+      
       subpanel[curRow].setLayout(new GridLayout(1, 1));
       infoF = new JTextField("");
       infoF.setEditable(false);
@@ -98,6 +108,8 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
       {
          infoF.setText("");
          curUnit.setSize(UnitDimensions.getUnitSizeInches((UnitType)unitTypeDD.getSelectedItem(), (UnitSize)unitSizeDD.getSelectedItem()));
+         curUnit.setAura6(aura6CB.isSelected());
+         curUnit.setAura9(aura9CB.isSelected());
       }
       unitDisplayPanel.repaint();
    }

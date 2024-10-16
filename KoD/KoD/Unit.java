@@ -8,6 +8,9 @@ public class Unit implements KoDConstants
 	private String name;
    private String displayName;
 	private double[] origin;
+   private boolean aura6;
+   private boolean aura9;
+   private boolean deployed;
 
 
 	public double getWidth(){return width;}
@@ -16,6 +19,9 @@ public class Unit implements KoDConstants
 	public String getName(){return name;}
    public String getDisplayName(){return displayName;}
 	public double[] getOrigin(){return origin;}
+   public boolean hasAura6(){return aura6;}
+   public boolean hasAura9(){return aura9;}
+   public boolean isDeployed(){return deployed;}
 
 
 	public void setWidth(double w){width = w;}
@@ -26,6 +32,9 @@ public class Unit implements KoDConstants
    public void setDisplayName(String n){displayName = n;}
 	public void setOrigin(double[] o){origin = o;}
    public void setOrigin(int x, int y){origin[0] = x; origin[1] = y;}
+   public void setAura6(boolean a6){aura6 = a6;}
+   public void setAura9(boolean a9){aura9 = a9;}
+   public void setDeployed(boolean d){deployed = d;}
 
 
    public Unit()
@@ -41,6 +50,24 @@ public class Unit implements KoDConstants
       length = l;
       origin = new double[2];
       angle = 0.0;
+      aura6 = false;
+      aura9 = false;
+      deployed = false;
+   }
+   
+   public Unit(Unit that)
+   {
+      this.name = that.name;
+      this.displayName = that.displayName;
+      this.width = that.width;
+      this.length = that.length;
+      this.origin = new double[2];
+      this.origin[0] = that.origin[0];
+      this.origin[1] = that.origin[1];
+      this.angle = that.angle;
+      this.aura6 = that.aura6;
+      this.aura9 = that.aura9;
+      this.deployed = that.deployed;
    }
    
    // returns list of x points and parallel list of y points, relative to field position

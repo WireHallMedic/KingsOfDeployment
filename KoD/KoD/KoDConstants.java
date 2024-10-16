@@ -28,9 +28,29 @@ public interface KoDConstants
          width = w;
          length = l;
       }
+      
+      @Override
+      public String toString(){return this.name;}
    };
    
-   public enum UnitSize {INDIVIDUAL, TROOP, REGIMENT, HORDE, LEGION};
+   public enum UnitSize 
+   {
+      INDIVIDUAL  ("Individual"), 
+      TROOP       ("Troop"), 
+      REGIMENT    ("Regiment"), 
+      HORDE       ("Horde"), 
+      LEGION      ("Legion");
+      
+      public String name;
+      
+      private UnitSize(String n)
+      {
+         name = n;
+      }
+      
+      @Override
+      public String toString(){return this.name;}
+   };
    
    public static final double MM_TO_IN = 0.0393701;
    
