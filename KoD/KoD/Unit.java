@@ -18,6 +18,7 @@ public class Unit implements KoDConstants
 
 	public void setWidth(double w){width = w;}
 	public void setLength(double l){length = l;}
+   public void setSize(double s[]){width = s[0]; length = s[1];}
 	public void setAngle(double a){angle = a;}
 	public void setName(String n){name = n;}
 	public void setOrigin(double[] o){origin = o;}
@@ -58,4 +59,5 @@ public class Unit implements KoDConstants
       double[][] fullList = {xList, yList};
       return fullList;
    }
+   public double[][] getCornersCenteredOnPoint(double[] center){return getCornersCenteredOnPoint(center[0], center[1]);}
 }

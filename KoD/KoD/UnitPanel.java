@@ -2,8 +2,9 @@ package KoD;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class UnitPanel extends JPanel implements KoDConstants
+public class UnitPanel extends JPanel implements KoDConstants, ActionListener
 {
    private Unit curUnit;
    private JComboBox<UnitType> unitTypeDD;
@@ -13,6 +14,8 @@ public class UnitPanel extends JPanel implements KoDConstants
    private JPanel[] subpanel;
    private UnitDisplayPanel unitDisplayPanel;
    private static final int CONTROL_ROWS = 6;
+   
+   public Unit getCurUnit(){return curUnit;}
    
    public UnitPanel()
    {
@@ -40,11 +43,13 @@ public class UnitPanel extends JPanel implements KoDConstants
       subpanel[1].setLayout(new GridLayout(1, 2));
       subpanel[1].add(new JLabel("Unit Type"));
       unitTypeDD = new JComboBox<UnitType>(UnitType.values());
+      unitTypeDD.addActionListener(this);
       subpanel[1].add(unitTypeDD);
       
       subpanel[2].setLayout(new GridLayout(1, 2));
       subpanel[2].add(new JLabel("Unit Size"));
       unitSizeDD = new JComboBox<UnitSize>(UnitSize.values());
+      unitSizeDD.addActionListener(this);
       subpanel[2].add(unitSizeDD);
       
       subpanel[3].setLayout(new GridLayout(1, 2));
@@ -56,6 +61,23 @@ public class UnitPanel extends JPanel implements KoDConstants
       infoF.setFocusable(false);
       subpanel[4].add(infoF);
       this.repaint();
+   }
+   
+   public boolean hasValidUnitShape()
+   {
+      return UnitDimensions.getUnitSizeInches((UnitType)unitTypeDD.getSelectedItem(), (UnitSize)unitSizeDD.getSelectedItem()) != null;
+   }
+   
+   public void actionPerformed(ActionEvent aeRef)
+   {
+      if(!hasValidUnitShape())
+         infoF.setText("Invalid Unit Type and Size configuration.");
+      else
+      {
+         infoF.setText("");
+         curUnit.setSize(UnitDimensions.getUnitSizeInches((UnitType)unitTypeDD.getSelectedItem(), (UnitSize)unitSizeDD.getSelectedItem()));
+      }
+      unitDisplayPanel.repaint();
    }
    
    public static void main(String[] args)
