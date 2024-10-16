@@ -2,12 +2,15 @@ package KoD;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.*;
 
 public class DeployPanel extends JPanel implements KoDConstants
 {
-   private int widthInInches = 6 * 12;
-   private int heightInInches = 1 * 12;
+   private int widthInInches;
+   private int heightInInches;
    private double pixelsPerInch;
+   private Vector<Unit> unitList;
+   private Unit selectedUnit;
    
    public DeployPanel()
    {
@@ -15,6 +18,32 @@ public class DeployPanel extends JPanel implements KoDConstants
       widthInInches = 6 * 12;
       heightInInches = 1 * 12;
       pixelsPerInch = 10.0;
+      unitList = new Vector<Unit>();
+      selectedUnit = null;
+   }
+   
+   public void deleteSelectedUnit()
+   {
+      if(selectedUnit != null)
+         deleteUnit(selectedUnit);
+      selectedUnit = null;
+   }
+   
+   public void addUnit(Unit u)
+   {
+      if(!unitList.contains(u))
+         unitList.add(u);
+   }
+   
+   public void addUnitCopy(Unit u)
+   {
+      u = new Unit(u);
+      addUnit(u);
+   }
+   
+   public void deleteUnit(Unit u)
+   {
+      unitList.remove(u);
    }
    
    // must be able to show full area

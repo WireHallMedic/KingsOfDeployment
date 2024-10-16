@@ -41,7 +41,7 @@ public class ControlPanel extends JPanel implements KoDConstants, ActionListener
    public void actionPerformed(ActionEvent ae)
    {
       if(ae.getSource() == newB)
-         ;
+         parent.setNewUnit();
       if(ae.getSource() == deployB)
          ;
       if(ae.getSource() == deleteB)
@@ -50,6 +50,7 @@ public class ControlPanel extends JPanel implements KoDConstants, ActionListener
          ;
       if(ae.getSource() == loadB)
          ;
+      updateAvailableButtons();
    }
    
    public void updateAvailableButtons()

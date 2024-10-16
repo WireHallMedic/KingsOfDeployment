@@ -42,6 +42,11 @@ public class KoDFrame extends JFrame
       return unitPanel.getCurUnit();
    }
    
+   public void setNewUnit()
+   {
+      unitPanel.newUnit();
+   }
+   
    public static void main(String[] args)
    {
       KoDFrame frame = new KoDFrame();
