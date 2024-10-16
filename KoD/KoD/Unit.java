@@ -41,7 +41,7 @@ public class Unit implements KoDConstants
    // returns list of x points and parallel list of y points, relative to field position
    public double[][] getCorners(double xOffset, double yOffset)
    {
-      return getCornersCenteredOnPoint(origin[0] - xCenter, origin[1] - yCenter);
+      return getCornersCenteredOnPoint(origin[0] - xOffset, origin[1] - yOffset);
    }
    
    // returns list of x points and parallel list of y points, relative to explicit position
