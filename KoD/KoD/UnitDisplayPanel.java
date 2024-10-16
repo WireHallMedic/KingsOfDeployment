@@ -44,11 +44,11 @@ public class UnitDisplayPanel extends JPanel implements KoDConstants
          g2d.setColor(Color.BLACK);
          g2d.drawPolygon(pixelPointsX, pixelPointsY, pixelPointsX.length);
          FontMetrics fontMetrics = g2d.getFontMetrics();
-         int lineWidth = fontMetrics.stringWidth(curUnit.getName());
+         int lineWidth = fontMetrics.stringWidth(curUnit.getDisplayName());
          int lineHeight = fontMetrics.getHeight();
          int centerX = (int)(center[0] * pixelsPerInch);
          int centerY = (int)(center[1] * pixelsPerInch);
-         g2d.drawString(curUnit.getName(), centerX - (lineWidth / 2), centerY + (lineHeight / 2));
+         g2d.drawString(curUnit.getDisplayName(), centerX - (lineWidth / 2), centerY + (lineHeight / 2));
       }
    }
    

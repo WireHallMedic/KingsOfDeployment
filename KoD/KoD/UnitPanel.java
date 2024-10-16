@@ -39,38 +39,42 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
          rightPanel.add(subpanel[i]);
       }
       
-      subpanel[0].setLayout(new GridLayout(1, 2));
-      subpanel[0].add(new JLabel("Name"));
+      int curRow = 0;
+      subpanel[curRow].setLayout(new GridLayout(1, 2));
+      subpanel[curRow].add(new JLabel("Name"));
       nameF = new JTextField(curUnit.getName());
       nameF.getDocument().addDocumentListener(this);
-      subpanel[0].add(nameF);
+      subpanel[curRow].add(nameF);
+      curRow++;
       
-      subpanel[1].setLayout(new GridLayout(1, 2));
-      subpanel[1].add(new JLabel("Display Name"));
+      subpanel[curRow].setLayout(new GridLayout(1, 2));
+      subpanel[curRow].add(new JLabel("Display Name"));
       displayNameF = new JTextField(curUnit.getDisplayName());
       displayNameF.getDocument().addDocumentListener(this);
-      subpanel[1].add(displayNameF);
+      subpanel[curRow].add(displayNameF);
+      curRow++;
       
-      subpanel[1].setLayout(new GridLayout(1, 2));
-      subpanel[1].add(new JLabel("Unit Type"));
+      subpanel[curRow].setLayout(new GridLayout(1, 2));
+      subpanel[curRow].add(new JLabel("Unit Type"));
       unitTypeDD = new JComboBox<UnitType>(UnitType.values());
       unitTypeDD.addActionListener(this);
-      subpanel[1].add(unitTypeDD);
+      subpanel[curRow].add(unitTypeDD);
+      curRow++;
       
-      subpanel[2].setLayout(new GridLayout(1, 2));
-      subpanel[2].add(new JLabel("Unit Size"));
+      subpanel[curRow].setLayout(new GridLayout(1, 2));
+      subpanel[curRow].add(new JLabel("Unit Size"));
       unitSizeDD = new JComboBox<UnitSize>(UnitSize.values());
       unitSizeDD.addActionListener(this);
-      subpanel[2].add(unitSizeDD);
+      subpanel[curRow].add(unitSizeDD);
+      curRow++;
       
-      subpanel[3].setLayout(new GridLayout(1, 2));
-      subpanel[3].add(new JLabel("Decoration"));
-      
-      subpanel[4].setLayout(new GridLayout(1, 1));
-      infoF = new JTextField("infoF");
+      subpanel[curRow].setLayout(new GridLayout(1, 1));
+      infoF = new JTextField("");
       infoF.setEditable(false);
       infoF.setFocusable(false);
-      subpanel[4].add(infoF);
+      subpanel[curRow].add(infoF);
+      curRow++;
+      
       this.repaint();
    }
    
@@ -82,6 +86,7 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
    public void updateUnitName()
    {
       curUnit.setName(nameF.getText());
+      curUnit.setDisplayName(displayNameF.getText());
       unitDisplayPanel.repaint();
    }
    
