@@ -1,6 +1,6 @@
 package KoD
 
-public interface UnitDimensions
+public interface KoDConstants
 {
    public static final int INFANTRY = 0;
    public static final int HEAVY_INFANTRY = 1;
