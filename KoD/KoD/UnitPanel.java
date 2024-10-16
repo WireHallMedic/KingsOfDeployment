@@ -49,7 +49,7 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
       
       subpanel[curRow].setLayout(new GridLayout(1, 2));
       subpanel[curRow].add(new JLabel("Display Name"));
-      displayNameF = new JTextField(curUnit.getDisplayName());
+      displayNameF = new JTextField();
       displayNameF.getDocument().addDocumentListener(this);
       subpanel[curRow].add(displayNameF);
       curRow++;
@@ -69,8 +69,8 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
       curRow++;
       
       subpanel[curRow].setLayout(new GridLayout(1, 3));
-      aura6CB = new JCheckBox("Show 6\" Ring");
-      aura9CB = new JCheckBox("Show 9\" Ring");
+      aura6CB = new JCheckBox("6\" Ring");
+      aura9CB = new JCheckBox("9\" Ring");
       aura6CB.addActionListener(this);
       aura9CB.addActionListener(this);
       subpanel[curRow].add(aura6CB);
@@ -85,6 +85,8 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
       subpanel[curRow].add(infoF);
       curRow++;
       
+      newUnit();
+      
       this.repaint();
    }
    
@@ -98,6 +100,18 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
       curUnit.setName(nameF.getText());
       curUnit.setDisplayName(displayNameF.getText());
       unitDisplayPanel.repaint();
+   }
+   
+   public void newUnit()
+   {
+      curUnit = new Unit();
+      nameF.setText(curUnit.getName());
+      unitTypeDD.setSelectedIndex(0);
+      unitSizeDD.setSelectedIndex(0);
+      displayNameF.setText("");
+      aura6CB.setSelected(false);
+      aura9CB.setSelected(false);
+      infoF.setText("");
    }
    
    public void actionPerformed(ActionEvent aeRef)

@@ -6,7 +6,7 @@ import java.awt.*;
 public class KoDFrame extends JFrame
 {
    private JPanel panel1;
-   private JPanel controlPanel;
+   private ControlPanel controlPanel;
    private UnitPanel unitPanel;
    private DeployPanel deployPanel;
    
@@ -15,6 +15,7 @@ public class KoDFrame extends JFrame
       super();
       setSize(1200, 800);
       setLayout(new GridLayout(2, 1));
+      setDefaultCloseOperation(EXIT_ON_CLOSE);
       
       JPanel anonPanel = new JPanel();
       anonPanel.setLayout(new GridLayout(1, 2));
@@ -23,19 +24,22 @@ public class KoDFrame extends JFrame
       anonPanel2.setLayout(new GridLayout(1, 2));
       anonPanel.add(anonPanel2);
       panel1 = new JPanel();
-      panel1.add(new JLabel("Panel 1"));
+      panel1.add(new JLabel("Unused Panel"));
       anonPanel2.add(panel1);
-      controlPanel = new JPanel();
-      controlPanel.add(new JLabel("Control Panel"));
+      controlPanel = new ControlPanel(this);
       anonPanel2.add(controlPanel);
       unitPanel = new UnitPanel();
       anonPanel.add(unitPanel);
       deployPanel = new DeployPanel();
-      deployPanel.add(new JLabel("Deploy Panel"));
       this.add(deployPanel);
       
-      setDefaultCloseOperation(EXIT_ON_CLOSE);
+      controlPanel.updateAvailableButtons();
       setVisible(true);
+   }
+   
+   public Unit getCurUnit()
+   {
+      return unitPanel.getCurUnit();
    }
    
    public static void main(String[] args)
