@@ -3,8 +3,9 @@ package KoD;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.event.*;
 
-public class UnitPanel extends JPanel implements KoDConstants, ActionListener
+public class UnitPanel extends JPanel implements KoDConstants, ActionListener, DocumentListener
 {
    private Unit curUnit;
    private JComboBox<UnitType> unitTypeDD;
@@ -38,6 +39,7 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener
       subpanel[0].setLayout(new GridLayout(1, 2));
       subpanel[0].add(new JLabel("Name"));
       nameF = new JTextField(curUnit.getName());
+      nameF.getDocument().addDocumentListener(this);
       subpanel[0].add(nameF);
       
       subpanel[1].setLayout(new GridLayout(1, 2));
@@ -68,6 +70,12 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener
       return UnitDimensions.getUnitSizeInches((UnitType)unitTypeDD.getSelectedItem(), (UnitSize)unitSizeDD.getSelectedItem()) != null;
    }
    
+   public void updateUnitName()
+   {
+      curUnit.setName(nameF.getText());
+      unitDisplayPanel.repaint();
+   }
+   
    public void actionPerformed(ActionEvent aeRef)
    {
       if(!hasValidUnitShape())
@@ -79,6 +87,11 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener
       }
       unitDisplayPanel.repaint();
    }
+   
+   public void changedUpdate(DocumentEvent e){updateUnitName();}
+   public void insertUpdate(DocumentEvent e){updateUnitName();}
+   public void removeUpdate(DocumentEvent e){updateUnitName();}
+   
    
    public static void main(String[] args)
    {
