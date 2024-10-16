@@ -37,5 +37,34 @@ public class UnitDimensions implements KoDConstants
       }
       return result;
    }
+   
+   public static int[] getTroopSizeModels(UnitType type)
+   {
+      int[] result = {-1, -1};
+      switch(type)
+      {
+         case INFANTRY :            result[0] = 5; 
+                                    result[1] = 2;
+                                    break;
+         case HEAVY_INFANTRY :      result[0] = 5; 
+                                    result[1] = 2;
+                                    break;
+         case CAVALRY :             result[0] = 5; 
+                                    result[1] = 1;
+                                    break;
+         case LARGE_INFANTRY:
+         case SWARM :               break;
+         case LARGE_CAVALRY:
+         case MONSTROUS_INFANTRY :  break;
+         case CHARIOT :             result[0] = 2; 
+                                    result[1] = 1;
+                                    break;
+         case TITAN :
+         case MONSTER:
+         case WAR_MACHINE :
+                                    break;
+      }
+      return result;
+   }
 }
 
