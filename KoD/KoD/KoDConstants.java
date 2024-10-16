@@ -1,5 +1,7 @@
 package KoD;
 
+import java.awt.*;
+
 public interface KoDConstants
 {
    public enum UnitType 
@@ -31,5 +33,7 @@ public interface KoDConstants
    public enum UnitSize {INDIVIDUAL, TROOP, REGIMENT, HORDE, LEGION};
    
    public static final double MM_TO_IN = 0.0393701;
+   
+   public static final Color FIELD_COLOR = Color.GREEN.darker();
 }
 

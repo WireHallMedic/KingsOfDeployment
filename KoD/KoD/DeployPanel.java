@@ -36,5 +36,7 @@ public class DeployPanel extends JPanel
       int fieldHeight = (int)(heightInInches * pixelsPerInch);
       int startX = (getWidth() - fieldWidth) / 2;
       int startY = (getHeight() - fieldHeight) / 2;
+      
+      
    }
 }

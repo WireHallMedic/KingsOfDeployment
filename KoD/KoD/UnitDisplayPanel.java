@@ -13,7 +13,7 @@ public class UnitDisplayPanel extends JPanel implements KoDConstants
       super();
       parent = p;
       pixelsPerInch = 10.0;
-      setBackground(Color.GREEN.darker());
+      setBackground(FIELD_COLOR);
    }
    
    @Override
