@@ -59,13 +59,12 @@ public class UnitDimensions implements KoDConstants
                                     break;
          case TITAN :
          case MONSTER:
-         case WAR_MACHINE :
-                                    break;
+         case WAR_MACHINE :         break;
       }
       return result;
    }
    
-   public static int[] getTRegimentSizeModels(UnitType type)
+   public static int[] getRegimentSizeModels(UnitType type)
    {
       int[] result = {-1, -1};
       switch(type)
@@ -86,8 +85,35 @@ public class UnitDimensions implements KoDConstants
                                     break;
          case TITAN :
          case MONSTER:
-         case WAR_MACHINE :
+         case WAR_MACHINE :         break;
+      }
+      return result;
+   }
+   
+   public static int[] getHordeSizeModels(UnitType type)
+   {
+      int[] result = {-1, -1};
+      switch(type)
+      {
+         case INFANTRY : 
+         case HEAVY_INFANTRY :      result[0] = 10; 
+                                    result[1] = 4;
                                     break;
+         case CAVALRY :             result[0] = 10; 
+                                    result[1] = 2;
+                                    break;
+         case LARGE_INFANTRY:
+         case SWARM :               
+         case LARGE_CAVALRY:
+         case MONSTROUS_INFANTRY :  result[0] = 3; 
+                                    result[1] = 2;
+                                    break;
+         case CHARIOT :             result[0] = 4; 
+                                    result[1] = 1;
+                                    break;
+         case TITAN :
+         case MONSTER:
+         case WAR_MACHINE :         break;
       }
       return result;
    }
