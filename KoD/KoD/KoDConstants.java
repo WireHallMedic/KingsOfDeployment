@@ -1,4 +1,4 @@
-package KoD
+package KoD;
 
 public interface KoDConstants
 {
