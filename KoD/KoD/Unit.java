@@ -37,4 +37,25 @@ public class Unit implements KoDConstants
       origin = new double[2];
       angle = 0.0;
    }
+   
+   // returns list of x points and parallel list of y points, relative to field position
+   public double[][] getCorners(double xOffset, double yOffset)
+   {
+      return null;
+   }
+   
+   // returns list of x points and parallel list of y points, relative to explicit position
+   // TODO: implement rotation
+   public double[][] getCornersCenteredOnPoint(double xCenter, double yCenter)
+   {
+      double[] xList = new double[4];
+      double[] yList = new double[4];
+      xList[0] = xCenter - (width / 2); yList[0] = yCenter - (length / 2);
+      xList[1] = xCenter - (width / 2); yList[1] = yCenter - (length / 2);
+      xList[2] = xCenter - (width / 2); yList[2] = yCenter - (length / 2);
+      xList[3] = xCenter - (width / 2); yList[3] = yCenter - (length / 2);
+      
+      double[][] fullList = {xList, yList};
+      return fullList;
+   }
 }
