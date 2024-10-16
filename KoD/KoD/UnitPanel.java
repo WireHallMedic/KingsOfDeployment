@@ -11,17 +11,17 @@ public class UnitPanel extends JPanel implements KoDConstants
    private JTextField nameF;
    private JTextField infoF;
    private JPanel[] subpanel;
+   private UnitDisplayPanel unitDisplayPanel;
    private static final int CONTROL_ROWS = 6;
    
    public UnitPanel()
    {
       super();
       curUnit = new Unit();
-      JPanel leftPanel = new JPanel();
+      unitDisplayPanel = new UnitDisplayPanel(this);
       JPanel rightPanel = new JPanel();
       setLayout(new GridLayout(1, 2));
-      leftPanel.setBackground(Color.GREEN);
-      add(leftPanel);
+      add(unitDisplayPanel);
       add(rightPanel);
       rightPanel.setLayout(new GridLayout(CONTROL_ROWS, 1));
       
