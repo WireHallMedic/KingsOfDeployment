@@ -28,7 +28,7 @@ public class KoDFrame extends JFrame
       anonPanel2.add(panel1);
       controlPanel = new ControlPanel(this);
       anonPanel2.add(controlPanel);
-      unitPanel = new UnitPanel();
+      unitPanel = new UnitPanel(this);
       anonPanel.add(unitPanel);
       deployPanel = new DeployPanel();
       this.add(deployPanel);
@@ -53,7 +53,13 @@ public class KoDFrame extends JFrame
       {
          deployPanel.addUnit(unitPanel.getCurUnit());
       }
-      deployPanel.repaint();
+      repaintField();
+   }
+   
+   public void repaintField()
+   {
+      if(deployPanel != null)
+         deployPanel.repaint();
    }
    
    public static void main(String[] args)

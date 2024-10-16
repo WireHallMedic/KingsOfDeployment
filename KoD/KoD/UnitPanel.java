@@ -7,6 +7,7 @@ import javax.swing.event.*;
 
 public class UnitPanel extends JPanel implements KoDConstants, ActionListener, DocumentListener
 {
+   private KoDFrame parent;
    private Unit curUnit;
    private JComboBox<UnitType> unitTypeDD;
    private JComboBox<UnitSize> unitSizeDD;
@@ -21,9 +22,10 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
    
    public Unit getCurUnit(){return curUnit;}
    
-   public UnitPanel()
+   public UnitPanel(KoDFrame p)
    {
       super();
+      parent = p;
       curUnit = new Unit();
       unitDisplayPanel = new UnitDisplayPanel(this);
       JPanel rightPanel = new JPanel();
@@ -100,6 +102,7 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
       curUnit.setName(nameF.getText());
       curUnit.setDisplayName(displayNameF.getText());
       unitDisplayPanel.repaint();
+      parent.repaintField();
    }
    
    public void newUnit()
@@ -126,19 +129,11 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
          curUnit.setAura9(aura9CB.isSelected());
       }
       unitDisplayPanel.repaint();
+      parent.repaintField();
    }
    
    public void changedUpdate(DocumentEvent e){updateUnitName();}
    public void insertUpdate(DocumentEvent e){updateUnitName();}
    public void removeUpdate(DocumentEvent e){updateUnitName();}
-   
-   
-   public static void main(String[] args)
-   {
-      JFrame frame = new JFrame();
-      frame.setSize(1000, 400);
-      frame.add(new UnitPanel());
-      frame.setVisible(true);
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-   }
+
 }

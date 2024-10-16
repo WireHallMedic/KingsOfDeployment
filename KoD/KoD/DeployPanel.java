@@ -94,12 +94,13 @@ public class DeployPanel extends JPanel implements KoDConstants
          g2d.fillPolygon(pixelPointsX, pixelPointsY, pixelPointsX.length);
          g2d.setColor(Color.BLACK);
          g2d.drawPolygon(pixelPointsX, pixelPointsY, pixelPointsX.length);
-        //  FontMetrics fontMetrics = g2d.getFontMetrics();
-//          int lineWidth = fontMetrics.stringWidth(curUnit.getDisplayName());
-//          int lineHeight = fontMetrics.getHeight();
-//          int centerX = (int)(center[0] * pixelsPerInch);
-//          int centerY = (int)(center[1] * pixelsPerInch);
-//          g2d.drawString(curUnit.getDisplayName(), centerX - (lineWidth / 2), centerY + (lineHeight / 2));
+         double[] center = curUnit.getOrigin();
+         FontMetrics fontMetrics = g2d.getFontMetrics();
+         int lineWidth = fontMetrics.stringWidth(curUnit.getDisplayName());
+         int lineHeight = fontMetrics.getHeight();
+         int centerX = (int)(center[0] * pixelsPerInch) + startX;
+         int centerY = (int)(center[1] * pixelsPerInch) + startY;
+         g2d.drawString(curUnit.getDisplayName(), centerX - (lineWidth / 2), centerY + (lineHeight / 2));
       }
       
       // paint the auras
