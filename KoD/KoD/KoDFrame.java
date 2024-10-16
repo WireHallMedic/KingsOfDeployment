@@ -8,7 +8,7 @@ public class KoDFrame extends JFrame
    private JPanel panel1;
    private JPanel controlPanel;
    private UnitPanel unitPanel;
-   private JPanel deployPanel;
+   private DeployPanel deployPanel;
    
    public KoDFrame()
    {
@@ -30,7 +30,7 @@ public class KoDFrame extends JFrame
       anonPanel2.add(controlPanel);
       unitPanel = new UnitPanel();
       anonPanel.add(unitPanel);
-      deployPanel = new JPanel();
+      deployPanel = new DeployPanel();
       deployPanel.add(new JLabel("Deploy Panel"));
       this.add(deployPanel);
       

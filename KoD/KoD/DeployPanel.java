@@ -3,7 +3,7 @@ package KoD;
 import javax.swing.*;
 import java.awt.*;
 
-public class DeployPanel extends JPanel
+public class DeployPanel extends JPanel implements KoDConstants
 {
    private int widthInInches = 6 * 12;
    private int heightInInches = 1 * 12;
@@ -36,7 +36,14 @@ public class DeployPanel extends JPanel
       int fieldHeight = (int)(heightInInches * pixelsPerInch);
       int startX = (getWidth() - fieldWidth) / 2;
       int startY = (getHeight() - fieldHeight) / 2;
-      
+      g2d.setColor(FIELD_COLOR);
+      g2d.fillRect(startX, startY, fieldWidth, fieldHeight);
+      g2d.setColor(Color.BLACK);
+      g2d.drawRect(startX, startY, fieldWidth, fieldHeight);
+      for(int x = 0; x <= widthInInches; x++)
+         g2d.drawLine(startX + (int)(x * pixelsPerInch), startY, startX + (int)(x * pixelsPerInch), startY + fieldHeight);
+      for(int y = 0; y < heightInInches; y++)
+         g2d.drawLine(startX, startY + (int)(y * pixelsPerInch), startX + fieldWidth, startY + (int)(y * pixelsPerInch));
       
    }
 }
