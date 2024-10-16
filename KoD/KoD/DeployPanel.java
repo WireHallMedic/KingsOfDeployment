@@ -45,6 +45,10 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
          unitList.add(u);
          u.setDeployed(true);
          selectedUnit = u;
+         
+         int deployWidth = getWidth() / 2;
+         int deployHeight = fieldStartY + fieldHeight - (int)(u.getLength() * pixelsPerInch);
+         u.setOrigin(translatePixelToInches(deployWidth, deployHeight));
       }
    }
    
