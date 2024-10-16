@@ -19,5 +19,7 @@ public interface KoDConstants
    public static final int REGIMENT = 2;
    public static final int HORDE = 3;
    public static final int LEGION = 4;
+   
+   public static final double MM_TO_IN = 0.0393701;
 }
 
