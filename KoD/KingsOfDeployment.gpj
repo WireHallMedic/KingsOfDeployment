@@ -13,7 +13,8 @@ s#i0
 s#k0
 s#j0
 s#l0
-!186;g
+!214;g
+%\011KoD%sControlPanel.java
 %\011KoD%sUnitPanel.java
 %\011KoD%sKoDFrame.java
 %\011KoD%sDeployPanel.java
@@ -21,7 +22,8 @@ s#l0
 %\011KoD%sKoDConstants.java
 %\011KoD%sUnitDisplayPanel.java
 %\011KoD%sUnit.java
-!186;f
+!214;f
+%\011KoD%sControlPanel.java
 %\011KoD%sUnitPanel.java
 %\011KoD%sKoDFrame.java
 %\011KoD%sDeployPanel.java
@@ -29,3 +31,5 @@ s#l0
 %\011KoD%sKoDConstants.java
 %\011KoD%sUnitDisplayPanel.java
 %\011KoD%sUnit.java
+!23;m
+RunSelect	KoD.KoDFrame
