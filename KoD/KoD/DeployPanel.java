@@ -17,10 +17,12 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
    private Vector<Unit> unitList;
    private Unit selectedUnit;
    private boolean draggingSelected;
+   private KoDFrame parent;
    
-   public DeployPanel()
+   public DeployPanel(KoDFrame p)
    {
       super();
+      parent = p;
       widthInInches = 6 * 12;
       heightInInches = 1 * 12;
       pixelsPerInch = 10.0;
@@ -179,10 +181,15 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
             break;
          }
       }
+      selectedUnit = u;
       if(u != null)
       {
-         selectedUnit = u;
          draggingSelected = true;
+         parent.setCurUnit(u);
+      }
+      else
+      {
+         parent.setNewUnit();
       }
       repaint();
    }

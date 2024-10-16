@@ -30,7 +30,7 @@ public class KoDFrame extends JFrame
       anonPanel2.add(controlPanel);
       unitPanel = new UnitPanel(this);
       anonPanel.add(unitPanel);
-      deployPanel = new DeployPanel();
+      deployPanel = new DeployPanel(this);
       this.add(deployPanel);
       
       controlPanel.updateAvailableButtons();
@@ -40,6 +40,11 @@ public class KoDFrame extends JFrame
    public Unit getCurUnit()
    {
       return unitPanel.getCurUnit();
+   }
+   
+   public void setCurUnit(Unit u)
+   {
+      unitPanel.setCurUnit(u);
    }
    
    public void setNewUnit()

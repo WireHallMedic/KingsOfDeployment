@@ -10,6 +10,8 @@ public class Unit implements KoDConstants
 	private double[] origin;
    private boolean aura6;
    private boolean aura9;
+   private UnitType unitType;
+   private UnitSize unitSize;
    private boolean deployed;
 
 
@@ -21,6 +23,8 @@ public class Unit implements KoDConstants
 	public double[] getOrigin(){return origin;}
    public boolean hasAura6(){return aura6;}
    public boolean hasAura9(){return aura9;}
+   public UnitType getUnitType(){return unitType;}
+   public UnitSize getUnitSize(){return unitSize;}
    public boolean isDeployed(){return deployed;}
 
 
@@ -34,6 +38,8 @@ public class Unit implements KoDConstants
    public void setOrigin(int x, int y){origin[0] = x; origin[1] = y;}
    public void setAura6(boolean a6){aura6 = a6;}
    public void setAura9(boolean a9){aura9 = a9;}
+   public void setUnitSize(UnitSize us){unitSize = us;}
+   public void setUnitType(UnitType ut){unitType = ut;}
    public void setDeployed(boolean d){deployed = d;}
 
 
@@ -53,6 +59,8 @@ public class Unit implements KoDConstants
       aura6 = false;
       aura9 = false;
       deployed = false;
+      unitType = UnitType.INFANTRY;
+      unitSize = UnitSize.INDIVIDUAL;
    }
    
    public Unit(Unit that)
@@ -68,6 +76,8 @@ public class Unit implements KoDConstants
       this.aura6 = that.aura6;
       this.aura9 = that.aura9;
       this.deployed = that.deployed;
+      this.unitType = that.unitType;
+      this.unitSize = that.unitSize;
    }
    
    // returns list of x points and parallel list of y points, relative to field position
