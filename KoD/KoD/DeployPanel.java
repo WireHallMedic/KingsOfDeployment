@@ -16,6 +16,7 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
    private int fieldHeight;
    private Vector<Unit> unitList;
    private Unit selectedUnit;
+   private boolean draggingSelected;
    
    public DeployPanel()
    {
@@ -27,6 +28,7 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
       selectedUnit = null;
       addMouseListener(this);
       addMouseMotionListener(this);
+      draggingSelected = false;
    }
    
    public void deleteSelectedUnit()
@@ -113,6 +115,33 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
       }
       
       // paint the auras
+      for(Unit curUnit : unitList)
+      {
+         if(curUnit.hasAura6())
+            paintAura(curUnit, 6, g2d);
+         if(curUnit.hasAura9())
+            paintAura(curUnit, 9, g2d);
+      }
+   }
+   
+   public void paintAura(Unit curUnit, int radius, Graphics2D g2d)
+   {
+      int unitOriginX = (int)((curUnit.getOrigin()[0] - (curUnit.getWidth() / 2)) * pixelsPerInch) + fieldStartX;
+      int unitOriginY= (int)((curUnit.getOrigin()[1] - (curUnit.getLength() / 2)) * pixelsPerInch) + fieldStartY;
+      int unitWidth = (int)(curUnit.getWidth() * pixelsPerInch);
+      int unitHeight = (int)(curUnit.getLength() * pixelsPerInch);
+      radius = (int)(radius * pixelsPerInch);
+      g2d.setColor(AURA_COLOR);
+      // draw straight lines
+      g2d.drawLine(unitOriginX - radius, unitOriginY, unitOriginX - radius, unitOriginY + unitHeight);
+      g2d.drawLine(unitOriginX + radius + unitWidth, unitOriginY, unitOriginX + radius + unitWidth, unitOriginY + unitHeight);
+      g2d.drawLine(unitOriginX, unitOriginY - radius, unitOriginX + unitWidth, unitOriginY - radius);
+      g2d.drawLine(unitOriginX, unitOriginY + radius + unitHeight, unitOriginX + unitWidth, unitOriginY + radius + unitHeight);
+      // draw arcs
+      g2d.drawArc(unitOriginX - radius, unitOriginY - radius, radius * 2, radius * 2, 180, -90);
+      g2d.drawArc(unitOriginX - radius, unitOriginY + unitHeight - radius, radius * 2, radius * 2, 180, 90);
+      g2d.drawArc(unitOriginX + unitWidth - radius, unitOriginY - radius, radius * 2, radius * 2, 0, 90);
+      g2d.drawArc(unitOriginX + unitWidth - radius, unitOriginY + unitHeight - radius, radius * 2, radius * 2, 0, -90);
    }
    
    public double[] translatePixelToInches(int x, int y)
@@ -128,7 +157,11 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
    public void mouseEntered(MouseEvent e){}
    public void mouseExited(MouseEvent e){}
    public void mouseMoved(MouseEvent e){}
-   public void mouseReleased(MouseEvent e){}
+   
+   public void mouseReleased(MouseEvent e)
+   {
+      draggingSelected = false;
+   }
    
    public void mousePressed(MouseEvent e)
    {
@@ -145,6 +178,7 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
       if(u != null)
       {
          selectedUnit = u;
+         draggingSelected = true;
       }
       repaint();
    }
@@ -152,7 +186,7 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
    public void mouseDragged(MouseEvent e)
    {
       double[] loc = translatePixelToInches(e.getX(), e.getY());
-      if(selectedUnit.pointIsIn(loc))
+      if(draggingSelected)
       {
          selectedUnit.setOrigin(loc);
       }

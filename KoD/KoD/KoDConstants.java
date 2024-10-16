@@ -55,5 +55,6 @@ public interface KoDConstants
    public static final double MM_TO_IN = 0.0393701;
    
    public static final Color FIELD_COLOR = Color.GREEN.darker();
+   public static final Color AURA_COLOR = new Color(173, 216, 230);
 }
 
