@@ -34,8 +34,8 @@ public class Unit implements KoDConstants
 	public void setAngle(double a){angle = a;}
 	public void setName(String n){name = n;}
    public void setDisplayName(String n){displayName = n;}
-	public void setOrigin(double[] o){origin = o;}
-   public void setOrigin(int x, int y){origin[0] = x; origin[1] = y;}
+	public void setOrigin(double[] o){origin = o; push();}
+   public void setOrigin(int x, int y){origin[0] = x; origin[1] = y; push();}
    public void setAura6(boolean a6){aura6 = a6;}
    public void setAura9(boolean a9){aura9 = a9;}
    public void setUnitSize(UnitSize us){unitSize = us;}
@@ -124,6 +124,14 @@ public class Unit implements KoDConstants
    public boolean overlaps(Unit that)
    {
       return this.cornerIsIn(that) || that.cornerIsIn(this);
+   }
+   
+   public void push()
+   {
+      origin[0] = Math.max(origin[0] - (width / 2), 0);
+      origin[1] = Math.max(origin[1] - (length / 2), 0);
+      origin[0] = Math.min(origin[0] + (width / 2), DeployPanel.getFieldWidthInches() - (width / 2));
+      origin[1] = Math.min(origin[1] + (length / 2), DeployPanel.getFieldHeightInches() - (length / 2));
    }
    
 }

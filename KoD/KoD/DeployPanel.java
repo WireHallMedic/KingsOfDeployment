@@ -7,8 +7,8 @@ import java.awt.event.*;
 
 public class DeployPanel extends JPanel implements KoDConstants, MouseListener, MouseMotionListener
 {
-   private int widthInInches;
-   private int heightInInches;
+   private static int widthInInches;
+   private static int heightInInches;
    private double pixelsPerInch;
    private int fieldStartX;
    private int fieldStartY;
@@ -18,6 +18,9 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
    private Unit selectedUnit;
    private boolean draggingSelected;
    private KoDFrame parent;
+   
+   public static int getFieldWidthInches(){return widthInInches;}
+   public static int getFieldHeightInches(){return heightInInches;}
    
    public DeployPanel(KoDFrame p)
    {
