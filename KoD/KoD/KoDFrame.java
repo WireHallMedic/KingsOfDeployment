@@ -52,6 +52,7 @@ public class KoDFrame extends JFrame
    public void setNewUnit()
    {
       unitPanel.newUnit();
+      deployPanel.setSelectedUnit(null);
    }
    
    public void deployUnit()

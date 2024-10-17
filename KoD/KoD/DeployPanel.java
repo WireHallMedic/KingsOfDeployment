@@ -39,7 +39,8 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
    public void setSelectedUnit(Unit u)
    {
       selectedUnit = u;
-      parent.setCurUnit(u);
+      if(u != null)
+         parent.setCurUnit(u);
    }
    
    public void deleteSelectedUnit()
