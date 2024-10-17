@@ -157,7 +157,7 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
       int unitWidth = (int)(curUnit.getWidth() * pixelsPerInch);
       int unitHeight = (int)(curUnit.getLength() * pixelsPerInch);
       radius = (int)(radius * pixelsPerInch);
-      g2d.setColor(AURA_COLOR);
+      g2d.setColor(curUnit.getRingColor().color);
       // draw straight lines
       g2d.drawLine(unitOriginX - radius, unitOriginY, unitOriginX - radius, unitOriginY + unitHeight);
       g2d.drawLine(unitOriginX + radius + unitWidth, unitOriginY, unitOriginX + radius + unitWidth, unitOriginY + unitHeight);
