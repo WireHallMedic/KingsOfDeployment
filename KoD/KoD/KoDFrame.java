@@ -45,7 +45,7 @@ public class KoDFrame extends JFrame
    public void setCurUnit(Unit u)
    {
       unitPanel.setCurUnit(u);
-      
+      controlPanel.updateAvailableButtons();
    }
    
    public void setNewUnit()
