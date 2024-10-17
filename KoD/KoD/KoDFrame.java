@@ -16,6 +16,7 @@ public class KoDFrame extends JFrame
       setSize(1200, 800);
       setLayout(new GridLayout(2, 1));
       setDefaultCloseOperation(EXIT_ON_CLOSE);
+      setTitle("Kings of Deployment");
       
       JPanel anonPanel = new JPanel();
       anonPanel.setLayout(new GridLayout(1, 2));
