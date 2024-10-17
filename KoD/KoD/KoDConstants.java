@@ -54,12 +54,12 @@ public interface KoDConstants
    
    public enum RingColor 
    {
+      BLUE     ("Blue", Color.CYAN), 
       BLACK    ("Black", Color.BLACK), 
       WHITE    ("White", Color.WHITE), 
       RED      ("Red", Color.RED), 
       ORANGE   ("Orange", Color.ORANGE), 
       YELLOW   ("Yellow", Color.YELLOW), 
-      BLUE     ("Blue", Color.CYAN), 
       PURPLE   ("Purple", Color.MAGENTA);
       
       public String name;

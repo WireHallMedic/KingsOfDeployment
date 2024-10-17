@@ -12,6 +12,7 @@ public class Unit implements KoDConstants
    private boolean aura9;
    private UnitType unitType;
    private UnitSize unitSize;
+   private RingColor ringColor;
    private boolean deployed;
 
 
@@ -25,6 +26,7 @@ public class Unit implements KoDConstants
    public boolean hasAura9(){return aura9;}
    public UnitType getUnitType(){return unitType;}
    public UnitSize getUnitSize(){return unitSize;}
+   public RingColor getRingColor(){return ringColor;}
    public boolean isDeployed(){return deployed;}
 
 
@@ -40,6 +42,7 @@ public class Unit implements KoDConstants
    public void setAura9(boolean a9){aura9 = a9;}
    public void setUnitSize(UnitSize us){unitSize = us;}
    public void setUnitType(UnitType ut){unitType = ut;}
+   public void setRingColor(RingColor rc){ringColor = rc;}
    public void setDeployed(boolean d){deployed = d;}
 
 
@@ -61,6 +64,7 @@ public class Unit implements KoDConstants
       deployed = false;
       unitType = UnitType.INFANTRY;
       unitSize = UnitSize.INDIVIDUAL;
+      ringColor = RingColor.values()[0];
    }
    
    public Unit(Unit that)
@@ -78,6 +82,7 @@ public class Unit implements KoDConstants
       this.deployed = that.deployed;
       this.unitType = that.unitType;
       this.unitSize = that.unitSize;
+      this.ringColor = that.ringColor;
    }
    
    // returns list of x points and parallel list of y points, relative to field position
