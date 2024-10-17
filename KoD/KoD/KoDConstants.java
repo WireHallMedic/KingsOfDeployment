@@ -52,6 +52,29 @@ public interface KoDConstants
       public String toString(){return this.name;}
    };
    
+   public enum RingColor 
+   {
+      BLACK    ("Black", Color.BLACK), 
+      WHITE    ("White", Color.WHITE), 
+      RED      ("Red", Color.RED), 
+      ORANGE   ("Orange", Color.ORANGE), 
+      YELLOW   ("Yellow", Color.YELLOW), 
+      BLUE     ("Blue", Color.CYAN), 
+      PURPLE   ("Purple", Color.MAGENTA);
+      
+      public String name;
+      public Color color;
+      
+      private RingColor(String n, Color c)
+      {
+         name = n;
+         color = c;
+      }
+      
+      @Override
+      public String toString(){return this.name;}
+   };
+   
    public static final double MM_TO_IN = 0.0393701;
    
    public static final Color FIELD_COLOR = Color.GREEN.darker();
