@@ -110,6 +110,7 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
          curUnit.setUnitSize((UnitSize)unitSizeDD.getSelectedItem());
          curUnit.setAura6(aura6CB.isSelected());
          curUnit.setAura9(aura9CB.isSelected());
+         curUnit.push();
          unitDisplayPanel.repaint();
          parent.repaintField();
       }
