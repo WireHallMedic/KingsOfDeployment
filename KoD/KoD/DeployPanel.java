@@ -196,13 +196,16 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
    public void mousePressed(MouseEvent e)
    {
       Unit u = null;
-      double[] loc = translatePixelToInches(e.getX(), e.getY());
-      for(int i = unitList.size() - 1; i >= 0; i--)
+      if(e.getSource() == this)
       {
-         if(unitList.elementAt(i).pointIsIn(loc))
+         double[] loc = translatePixelToInches(e.getX(), e.getY());
+         for(int i = unitList.size() - 1; i >= 0; i--)
          {
-            u = unitList.elementAt(i);
-            break;
+            if(unitList.elementAt(i).pointIsIn(loc))
+            {
+               u = unitList.elementAt(i);
+               break;
+            }
          }
       }
       selectedUnit = u;

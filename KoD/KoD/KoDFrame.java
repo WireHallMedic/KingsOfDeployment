@@ -34,6 +34,8 @@ public class KoDFrame extends JFrame
       deployPanel = new DeployPanel(this);
       this.add(deployPanel);
       
+      panel1.addMouseListener(deployPanel);
+      
       controlPanel.updateAvailableButtons();
       setVisible(true);
    }
