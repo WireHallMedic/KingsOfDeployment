@@ -118,7 +118,10 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
             pixelPointsX[i] = (int)(pointsInInches[0][i] * pixelsPerInch) + fieldStartX;
             pixelPointsY[i] = (int)(pointsInInches[1][i] * pixelsPerInch) + fieldStartY;
          }
-         g2d.setColor(Color.WHITE);
+         if(isOverlapping(curUnit))
+            g2d.setColor(Color.RED);
+         else
+            g2d.setColor(Color.WHITE);
          if(curUnit == selectedUnit)
             g2d.setColor(Color.BLUE);
          g2d.fillPolygon(pixelPointsX, pixelPointsY, pixelPointsX.length);
@@ -220,5 +223,15 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
       }
       parent.updateLocF(loc);
       repaint();
+   }
+   
+   public boolean isOverlapping(Unit u)
+   {
+      for(Unit that : unitList)
+      {
+         if(u != that && u.overlaps(that))
+            return true;
+      }
+      return false;
    }
 }

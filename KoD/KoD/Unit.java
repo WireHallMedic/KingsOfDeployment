@@ -112,4 +112,18 @@ public class Unit implements KoDConstants
              y <= origin[1] + (length / 2);
    }
    public boolean pointIsIn(double[] coord){return pointIsIn(coord[0], coord[1]);}
+   
+   private boolean cornerIsIn(Unit that)
+   {
+      return pointIsIn(that.origin[0] - (that.width / 2), that.origin[1] - (that.length /2)) ||
+         pointIsIn(that.origin[0] + (that.width / 2), that.origin[1] - (that.length /2)) ||
+         pointIsIn(that.origin[0] - (that.width / 2), that.origin[1] + (that.length /2)) ||
+         pointIsIn(that.origin[0] + (that.width / 2), that.origin[1] + (that.length /2));
+   }
+   
+   public boolean overlaps(Unit that)
+   {
+      return this.cornerIsIn(that) || that.cornerIsIn(this);
+   }
+   
 }
