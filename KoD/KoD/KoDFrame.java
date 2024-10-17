@@ -45,6 +45,7 @@ public class KoDFrame extends JFrame
    public void setCurUnit(Unit u)
    {
       unitPanel.setCurUnit(u);
+      
    }
    
    public void setNewUnit()
@@ -75,6 +76,11 @@ public class KoDFrame extends JFrame
    {
       if(deployPanel != null)
          deployPanel.repaint();
+   }
+   
+   public void updateLocF(double[] loc)
+   {
+      controlPanel.updateLocF(loc);
    }
    
    public static void main(String[] args)

@@ -22,8 +22,6 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
    
    public Unit getCurUnit(){return curUnit;}
    
-   public void setCurUnit(Unit u){curUnit = u; setControlsFromUnit();}
-   
    public UnitPanel(KoDFrame p)
    {
       super();
@@ -110,17 +108,17 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
    public void newUnit()
    {
       curUnit = new Unit();
-      setControlsFromUnit();
+      setControlsFromUnit(curUnit);
    }
    
-   public void setControlsFromUnit()
+   public void setControlsFromUnit(Unit u)
    {
-      nameF.setText(curUnit.getName());
-      displayNameF.setText(curUnit.getDisplayName());
-      unitTypeDD.setSelectedIndex(curUnit.getUnitType().ordinal());
-      unitSizeDD.setSelectedIndex(curUnit.getUnitSize().ordinal());
-      aura6CB.setSelected(curUnit.hasAura6());
-      aura9CB.setSelected(curUnit.hasAura9());
+      nameF.setText(u.getName());
+      displayNameF.setText(u.getDisplayName());
+      unitTypeDD.setSelectedIndex(u.getUnitType().ordinal());
+      unitSizeDD.setSelectedIndex(u.getUnitSize().ordinal());
+      aura6CB.setSelected(u.hasAura6());
+      aura9CB.setSelected(u.hasAura9());
       infoF.setText("");
    }
    
@@ -139,6 +137,13 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
       }
       unitDisplayPanel.repaint();
       parent.repaintField();
+   }
+   
+   public void setCurUnit(Unit u)
+   {
+      newUnit();
+      setControlsFromUnit(u);
+      curUnit = u; 
    }
    
    public void changedUpdate(DocumentEvent e){updateUnitName();}

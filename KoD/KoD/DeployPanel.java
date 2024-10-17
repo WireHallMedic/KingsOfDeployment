@@ -33,9 +33,16 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
       draggingSelected = false;
    }
    
+   public void setSelectedUnit(Unit u)
+   {
+      selectedUnit = u;
+      parent.setCurUnit(u);
+   }
+   
    public void deleteSelectedUnit()
    {
       if(selectedUnit != null)
+         selectedUnit.setDeployed(false);
          deleteUnit(selectedUnit);
       selectedUnit = null;
    }
@@ -46,7 +53,7 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
       {
          unitList.add(u);
          u.setDeployed(true);
-         selectedUnit = u;
+         setSelectedUnit(u);
          
          int deployWidth = getWidth() / 2;
          int deployHeight = fieldStartY + fieldHeight - (int)(u.getLength() * pixelsPerInch);
@@ -90,7 +97,13 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
       g2d.setColor(Color.BLACK);
       g2d.drawRect(fieldStartX, fieldStartY, fieldWidth, fieldHeight);
       for(int x = 0; x <= widthInInches; x++)
+      {
+         if(x == widthInInches / 2)
+            g2d.setColor(Color.WHITE);
+         else
+            g2d.setColor(Color.BLACK);
          g2d.drawLine(fieldStartX + (int)(x * pixelsPerInch), fieldStartY, fieldStartX + (int)(x * pixelsPerInch), fieldStartY + fieldHeight);
+      }
       for(int y = 0; y < heightInInches; y++)
          g2d.drawLine(fieldStartX, fieldStartY + (int)(y * pixelsPerInch), fieldStartX + fieldWidth, fieldStartY + (int)(y * pixelsPerInch));
       
@@ -162,7 +175,11 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
    public void mouseClicked(MouseEvent e){}
    public void mouseEntered(MouseEvent e){}
    public void mouseExited(MouseEvent e){}
-   public void mouseMoved(MouseEvent e){}
+   public void mouseMoved(MouseEvent e)
+   {
+      double[] loc = translatePixelToInches(e.getX(), e.getY());
+      parent.updateLocF(loc);
+   }
    
    public void mouseReleased(MouseEvent e)
    {
@@ -201,6 +218,7 @@ public class DeployPanel extends JPanel implements KoDConstants, MouseListener, 
       {
          selectedUnit.setOrigin(loc);
       }
+      parent.updateLocF(loc);
       repaint();
    }
 }
