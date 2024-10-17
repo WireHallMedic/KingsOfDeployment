@@ -16,7 +16,7 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
    private JTextField infoF;
    private JCheckBox aura6CB;
    private JCheckBox aura9CB;
-   private JComboBox<RingColor> colorDD;
+   private JComboBox<RingColor> ringColorDD;
    private JPanel[] subpanel;
    private UnitDisplayPanel unitDisplayPanel;
    private static final int CONTROL_ROWS = 6;
@@ -76,13 +76,13 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
       subpanel[curRow].setLayout(new GridLayout(1, 3));
       aura6CB = new JCheckBox("6\" Ring");
       aura9CB = new JCheckBox("9\" Ring");
-      colorDD = new JComboBox<RingColor>(RingColor.values());
+      ringColorDD = new JComboBox<RingColor>(RingColor.values());
       aura6CB.addActionListener(this);
       aura9CB.addActionListener(this);
-      colorDD.addActionListener(this);
+      ringColorDD.addActionListener(this);
       subpanel[curRow].add(aura6CB);
       subpanel[curRow].add(aura9CB);
-      subpanel[curRow].add(colorDD);
+      subpanel[curRow].add(ringColorDD);
       curRow++;
       
       subpanel[curRow].setLayout(new GridLayout(1, 1));
@@ -113,6 +113,7 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
          curUnit.setUnitSize((UnitSize)unitSizeDD.getSelectedItem());
          curUnit.setAura6(aura6CB.isSelected());
          curUnit.setAura9(aura9CB.isSelected());
+         curUnit.setRingColor((RingColor)ringColorDD.getSelectedItem());
          curUnit.push();
          unitDisplayPanel.repaint();
          parent.repaintField();
@@ -134,6 +135,7 @@ public class UnitPanel extends JPanel implements KoDConstants, ActionListener, D
       unitSizeDD.setSelectedIndex(u.getUnitSize().ordinal());
       aura6CB.setSelected(u.hasAura6());
       aura9CB.setSelected(u.hasAura9());
+      ringColorDD.setSelectedIndex(u.getRingColor().ordinal());
       infoF.setText("");
       updateF = true;
    }
